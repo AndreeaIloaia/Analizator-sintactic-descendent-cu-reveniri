@@ -1,0 +1,24 @@
+P -> AN M
+AN -> INCL DECL
+INCL -> # include < iostream >
+DECL -> T LV ;
+T -> int | float | C
+C -> struct ID { DECL } ;
+LV -> ID , LV | ID
+M -> int main ( ) { LC LI A R }
+R -> return 0 ;
+LC -> std :: cin >> ID ; LC | std :: cin >> ID ;
+A -> std :: cout << ID ; | std :: cout << ID << WS << ID ;
+WS -> '\n'
+LI -> I LI | I
+I -> AT | W | F | IE | A | SC
+AT -> ID = OPER ; | ID = EX ;
+W -> while ( COND ) { LI }
+F -> for ( AT ; COND ; AT ) { LC LI } | for ( AT ; COND ; AT ) { LI }
+IE -> if ( COND ) { LI } else { LI } | if ( COND ) { LI }
+SC -> switch ( ID ) { case CONST : LI break ; } ;
+OPER -> ID | CONST
+EX -> OPER OP OPER | OPER OP OPER OP OPER
+OP -> + | * | -
+COND -> OPER REL OPER
+REL -> < | > | != | ==
